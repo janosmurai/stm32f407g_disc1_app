@@ -4,18 +4,40 @@ version = "0.1.0"
 authors = ["murai"]
 edition = "2018"
 
+# [dependencies]
+# cortex-m = "0.6.0"
+# cortex-m-rt = "0.6.8"
+# cortex-m-semihosting = "0.3.3"
+# panic-semihosting = "0.5.2"
+
 [dependencies]
 cortex-m = "0.5.8"
 cortex-m-rt = "0.6.5"
 cortex-m-semihosting = "0.3.2"
 panic-semihosting = "0.5.1"
 
-[dependencies.stm32f4xx-hal]
-version = "0.3.0"
+[dev-dependencies]
+ssd1306 = "0.2.4"
+nb = "0.1.2"
+
+[dependencies.embedded-hal]
+features = ["unproven"]
+version = "0.2.2"
+
+[dependencies.stm32f4xx-hal] #HAL functions
+version = "0.5.0"
 features = ["stm32f407"]
+
+[dependencies.stm32f4]
+version = "0.7.1"
+features = ["stm32f407", "rt"]
 
 [dependencies.stm32f407g_disc1]
 path = "../stm32f407g_disc1"
+
+[dependencies.lazy_static]
+features = ["spin_no_std"]
+version = "1.3.0"
 
 # this lets you use `cargo fix`!
 [[bin]]
@@ -23,7 +45,10 @@ name = "stm32f407g_disc1_app"
 test = false
 bench = false
 
+[profile.dev]
+debug = true
+
 [profile.release]
-codegen-units = 1 # better optimizations
+opt-level = "s"
 debug = true # symbols are nice and they don't increase the size on Flash
 lto = true # better optimizations

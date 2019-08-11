@@ -10,7 +10,7 @@
             "type": "gdb",
             "request": "launch",
             "cwd": "${workspaceRoot}",
-            "target": "${workspaceRoot}/target/thumbv7em-none-eabi/debug/stm32f407g_disc1", 
+            "target": "${workspaceRoot}/target/thumbv7em-none-eabi/debug/stm32f407g_disc1_app", 
             "gdbpath": "gdb-multiarch",
             "autorun": 
             [
